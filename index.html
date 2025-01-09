@@ -12,35 +12,83 @@
 	<link rel="stylesheet" type="text/css" href="css/site.css">
 	<!-- Experiment-specifc CSS file for any special styling of this particular page -->
 	<link rel="stylesheet" type="text/css" href="css/homepage.css">
+	<!-- CSS Framework 7.css: https://khang-nd.github.io/7.css/#button-->
+	<link rel="stylesheet" href="https://unpkg.com/7.css">
 	<!-- Link to javascript file - DEFER waits until all elements are rendered -->
 	<script type="text/javascript" src="./js/experiment.js"></script>
+	
 </head>
 <body>
 	<!-- Style this page by changing the CSS in ../css/site.css or css/experiment.css -->
 	<main id="content">
-        <h1>Josh Levano Portfolio</h1>
+		<div class="window active" style="max-width: 100%x;">
+			<div class="title-bar">
+			  <div class="title-bar-text"></div>
+			  <div class="title-bar-controls">
+				<button aria-label="Minimize"></button>
+				<button aria-label="Maximize"></button>
+				<button aria-label="Close"></button>
+			  </div>
+			</div>
+			<div class="window-body has-space">
+				<h1>Josh Levano Portfolio</h1>
+			</div>
+		  </div>
 		<section class="two-column">
 			<div class="minor-section">
 					<!-- Note that all filenames use lowercase and no spaces -->
-                    <div class="image-wrapper">
-                        <img class="cat-photo" src="./img/cute-grey-kitten.jpg">
-                    </div>
-					<h2>About Me</h2>
-					<p>Saludos! I'm Josh Levano &#40;they/he&#41;, a fourth year at UCSC. I quite enjoy the blend of art and technology, fashion, and going to the gym.
-					I want to explore the intersection of art and tech, to be inspired, and to create. Recent obsessions include clear case
-					tech from the early 2000s (Walkmans, CRT TVs, etc), Japanese fashion label Julius_7, and mounting houseplants onto things.
-					I would say I'm relatively proficient when it comes to coding in JS/C++/CSS/HTML, as I've taken quite a few coding classes
-					during my time at UCSC but I know that I've still got a lot to learn.</p>
+						<div class="window glass active" style="max-width: 100%; --window-background-color: #caecec;">
+						  <div class="title-bar">
+							<div class="title-bar-text">A foto of mi</div>
+							<div class="title-bar-controls">
+							  <button aria-label="Minimize"></button>
+							  <button aria-label="Close"></button>
+							</div>
+						  </div>
+						  <div class="window-body has-space">
+							<div class="image-wrapper">
+								<img class="cat-photo" src="./img/cute-grey-kitten.jpg">
+							</div>
+						  </div>
+						</div>
+						<br>
+						<div class="window glass active" style="max-width: 100%; --window-background-color: #aac4fc;">
+						  <div class="title-bar">
+							<div class="title-bar-text"><h2>About Me</h2></div>
+							<div class="title-bar-controls">
+							  <button aria-label="Minimize"></button>
+							  <button aria-label="Close"></button>
+							</div>
+						  </div>
+						  <div class="window-body has-space">
+							<p>Saludos! I'm Josh Levano &#40;they/he&#41;, a fourth year at UCSC. I quite enjoy the blend of art and technology, fashion, and going to the gym.
+								I want to explore the intersection of art and tech, to be inspired, and to create. Recent obsessions include clear case
+								tech from the early 2000s (Walkmans, CRT TVs, etc), Japanese fashion label Julius_7, and mounting houseplants onto things.
+								I would say I'm relatively proficient when it comes to coding in JS/C++/CSS/HTML, as I've taken quite a few coding classes
+								during my time at UCSC but I know that I've still got a lot to learn.</p>
+						  </div>
+						</div>					
 			</div>
             <div class="minor-section">
-                <h2>Links to Experiments</h2>
-                <ul>
-                    <li><a href="./experiment1/index.html">Experiment 1</a></li>
-                    <li><a href="./experiment2/index.html">Experiment 2</a></li>
-                    <li><a href="./experiment3/index.html">Experiment 3</a></li>
-                </ul>
-            </div>
-
+				<div class="window glass active" style="max-width: 100%; --window-background-color: #805ba5;">
+					<div class="title-bar">
+						<div class="title-bar-text"><h2>Links to Experiments</h2></div>
+						<div class="title-bar-controls">
+						<button aria-label="Minimize"></button>
+						<button aria-label="Close"></button>
+						</div>
+					</div>
+				  	<div class="window-body has-space">
+						<ul>
+							<li><a href="./experiment1/index.html"><button class="default">Experiment 1</button></a></li>
+							<br>
+							<li><a href="./experiment2/index.html"><button class="default">Experiment 2</button></a></li>
+							<br>
+							<li><a href="./experiment3/index.html"><button class="default">Experiemnt 3</button></a></li></button>
+						</ul>
+					</div>
+				</div>
+			</div>
 		</section>
 		<nav id="links">
 			<!-- Put links to experiments here. -->
