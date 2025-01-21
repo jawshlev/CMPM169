@@ -69,3 +69,12 @@ function mousePressed() {
     videoPlaying = true;
   }
 }
+
+// Resize canvas when fullscreen is toggled or the window is resized
+function windowResized() {
+  if (fullscreen()) {
+    resizeCanvas(windowWidth, windowHeight);
+  } else {
+    resizeCanvas(canvasContainer.width(), canvasContainer.height());
+  }
+}
