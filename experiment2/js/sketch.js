@@ -1,52 +1,71 @@
-// sketch.js - Displays a video on a canvas
+// sketch.js - purpose and description here
 // Author: Your Name
 // Date:
 
+// Constants
+const VIDEO_WIDTH = 720;
+const VIDEO_HEIGHT = 1200;
 let vid;
-let playing = true;
 let canvasContainer;
-let centerHorz, centerVert;
+let videoPlaying = false;
 
-function resizeScreen() {
-  centerHorz = canvasContainer.width() / 2; // Center horizontally
-  centerVert = canvasContainer.height() / 2; // Center vertically
-  console.log("Resizing...");
-  resizeCanvas(canvasContainer.width(), canvasContainer.height());
-}
-
+// setup() function is called once when the program starts
 function setup() {
-  // Set up the canvas to fit the container
+  // Place the canvas, making it fit the container
   canvasContainer = $("#canvas-container");
   let canvas = createCanvas(canvasContainer.width(), canvasContainer.height());
   canvas.parent("canvas-container");
 
-  // Handle window resizing
-  $(window).resize(function () {
-    resizeScreen();
-  });
-  resizeScreen();
-
   // Load the video
-  vid = createVideo("img/angelshalo.mp4");
-  vid.size(720, 1200); // Set video resolution
-  vid.volume(0); // Mute the video
-  vid.loop(); // Loop the video
-  vid.hide(); // Hide the default video element
+  vid = createVideo("angelshalo.mp4", videoLoaded);
+  vid.size(VIDEO_WIDTH, VIDEO_HEIGHT);
+  vid.volume(0);   // Start muted due to autoplay policy
+  vid.loop();      // Loop the video
+  vid.hide();      // Hide the actual HTML video element
 }
 
+// Callback when the video is loaded
+function videoLoaded() {
+  vid.play();  // Start video muted
+}
+
+// draw() function is called repeatedly, it's the main animation loop
 function draw() {
-  background(220);
+  background(0); // Optional: clear the canvas with black
 
-  // Display the video centered on the canvas
-  image(vid, (width - 720) / 2, (height - 1200) / 2, 720, 1200);
+  // Calculate the aspect ratio to fit the video in the canvas without distortion
+  let canvasAspect = canvasContainer.width() / canvasContainer.height();
+  let videoAspect = VIDEO_WIDTH / VIDEO_HEIGHT;
+
+  let drawWidth, drawHeight;
+
+  if (canvasAspect > videoAspect) {
+    // Canvas is wider than the video
+    drawHeight = canvasContainer.height();
+    drawWidth = (VIDEO_WIDTH / VIDEO_HEIGHT) * drawHeight;
+  } else {
+    // Canvas is taller than the video
+    drawWidth = canvasContainer.width();
+    drawHeight = (VIDEO_HEIGHT / VIDEO_WIDTH) * drawWidth;
+  }
+
+  // Center the video
+  let centerX = (canvasContainer.width() - drawWidth) / 2;
+  let centerY = (canvasContainer.height() - drawHeight) / 2;
+
+  // Draw the video on the canvas while keeping the aspect ratio
+  image(vid, centerX, centerY, drawWidth, drawHeight);
 }
 
+// mousePressed() function is called once after every time a mouse button is pressed
 function mousePressed() {
-  // Toggle video playback on mouse press
-  if (playing) {
+  // Toggle play/pause on mouse press
+  if (videoPlaying) {
     vid.pause();
+    videoPlaying = false;
   } else {
     vid.play();
+    vid.volume(1); // Enable audio after the user interacts with the page
+    videoPlaying = true;
   }
-  playing = !playing;
 }
