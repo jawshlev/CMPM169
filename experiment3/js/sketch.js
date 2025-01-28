@@ -67,9 +67,14 @@ function setup() {
   resizeScreen();
 
   video = createCapture({ video: { facingMode: "user" }, audio: false });
-  video.size(width, height);
+  video.size(width,height);  // Match the container size
+  video.style('width', '320px');  // Scale down display size
+  video.style('height', '240px');
+  video.parent("video-container");
   handPose.detectStart(video, gotHands);
-  video.hide();
+  // video.hide();
+  // videoDisp.size(320, 240);
+  // videoDisp.parent("video-container");
 
   // Text choosing
   selectedMessage = random(messages);
