@@ -17,8 +17,26 @@
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
         crossorigin="anonymous"></script>
+
 	<!-- Load p5.js library -->
-	<script src="https://cdn.jsdelivr.net/npm/p5@1.9.2/lib/p5.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.dom.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js"></script>
+
+	<!-- handpose library -->
+    <script src="https://unpkg.com/ml5@1/dist/ml5.min.js"></script>
+
+    <!-- Other Libraries -->
+    <script src="https://cdn.jsdelivr.net/gh/generative-design/Code-Package-p5.js@master/libraries/gg-dep-bundle/gg-dep-bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/opentype.js/0.7.3/opentype.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rita/1.3.11/rita-small.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/1.3.6/chroma.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica+SC&display=swap" rel="stylesheet">
 
 	<!-- Link to javascript files - DEFER waits until all elements are rendered -->
     <script type="text/javascript" src="../js/site.js" DEFER></script>
@@ -32,30 +50,51 @@
 	<main id="content">
 		<section>
 
-			<h1>Experiment X - Subject/Topic</h1>
+			<h1>Experiment 3 - Generative Artwork</h1>
 
 			<div class="minor-section">
 				<div id="canvas-container">
 					<!-- canvas will be added here -->
 				</div>
                 <div class="fullscreen-box">
-                    <button id="fullscreen">Fullscreen</button>
+                    <button id="fullscreen">Fullscreen - broken</button>
                 </div>
 			</div>
 
 			<div class="minor-section">
-				<h2>Description</h2>
-				<p>What are you trying to acomplish with this experiment?</p>
+				<h2><b>Description</b></h2>
+				<p>With this experiment I wanted to create a generative art piece that could be manipulated via hand controls. The chaotic nature
+					of the shapes, reflect the romantic yet brutalist nature of the poem lines.
+				</p>
 			</div>
 
 			<div class="minor-section">
-				<h2>Technical</h2>
-				<p>Describe in detail what you did technically and how it works?</p>
+				<h2><b>Technical</b></h2>
+				<p>
+				<b>Shape Generation</b><br>
+					The circular shape is generated via a series of points, calculated with cos() and sin(). The
+					startShape(), endShape(), and curveVertex() functions are all used to generate the smooth but wavy shapes.
+					The series of points are distorted via the distance between the left hand's middle finger tip and its base, the greater the distance
+					the more distortion. These points will always move towards the detected hand, but can be controled via the mouse if there isn't a
+					hand detected.<br>
+				<br>
+				<b>Hand Manipulation</b><br>
+					Using ml5.js, I set up an array to store the hands that are detected in the video. I then stored the x and y values for the middle
+					finger tip, base of the middle finger, and made it exclusive to the left hand. I stored the dist() between the middle finger and the
+					base, this is because I'm sure people aren't intuitively raising their middle finger due to the social implications of that, so they have
+					to open their hand. When they open their hand the shape gets more violent and when they close it tames it.<br>
+				<b>Text</b><br>
+					I imported the font from Google fonts, and colored it white to give the effect that the user is revealing the poetry. I chose a
+					font that best represents the atmosphere of the poems. The poems were mostly written by me with the exception of one.
+				</p>
+
 			</div>
 
 			<div class="minor-section">
 				<h2>Reflection</h2>
-				<p>Each person that worked on the code should reflect on the process, the difficulties, and the successes of the experiment.</p>
+				<p>I am so very pleased with how this project turned out, I set out to do what I wanted with this. I've learned a lot about
+					hand manipulation, and I put a fair bit of myself in this project. I think it's a gorgeous glimpse into my creative process.
+				</p>
 			</div>
 
 		</section>
