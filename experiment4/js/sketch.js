@@ -125,7 +125,8 @@ function gotFaces(results) {
 }
 
 function setup() {
-  createCanvas(800, 480);
+  let canvas = createCanvas(800, 480);
+  canvas.parent("canvas-container");
   video = createCapture({ video: { facingMode: "user" }, audio: false });
   video.hide();
   faceMesh.detectStart(video, gotFaces);
@@ -179,7 +180,7 @@ function draw() {
   
   // Optionally display the name and coords of each graphic for visual feedback
   if (showText) {
-    fill(255);
+    fill(255)
     noStroke();
     for (let g of graphics) {
       textSize(12);
@@ -274,7 +275,8 @@ function drawSidebar() {
 
   fill(30);
   rect(sidebarX, 0, 160, height);
-
+  fill(40);
+  rect(sidebarX + 10, 190, 145, 70, 20);
   fill(255);
   textSize(16);
   textAlign(CENTER, CENTER);
@@ -283,6 +285,9 @@ function drawSidebar() {
   drawButton("Default Eyes", sidebarX + 20, 50, () => addFeature("defaultEyes"));
   drawButton("Default Nose", sidebarX + 20, 100, () => addFeature("defaultNose"));
   drawButton("Default Lips", sidebarX + 20, 150, () => addFeature("defaultMouth"));
+  text("Controls:", sidebarX + 80, 200);
+  text("Toggle Sidebar: 1", sidebarX + 80, 220);
+  text("Toggle AfterImage: 2", sidebarX + 80, 240);
 }
 
 function drawButton(label, x, y, onClick) {
@@ -368,4 +373,5 @@ function keyPressed() {
   if (key == '2'){
     showBackground = !showBackground;
   }
+  if (key == "s" || key == "S") saveCanvas(gd.timestamp(), "png");
 }
