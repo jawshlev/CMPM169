@@ -47,6 +47,7 @@ function setup() {
 
 function draw() {
   if (freeze) return;
+  
   push();
   textFont("IM Fell DW Pica SC");
   textSize(24);
@@ -70,7 +71,7 @@ function draw() {
       }
     }
   } else {
-      if (millis() - startTime > 2000) {
+    if (millis() - startTime > 2000) {
       tempX = mouseX;
       tempY = mouseY;
     }
@@ -83,10 +84,8 @@ function draw() {
   let r = 255;
   let g = sin(colorShift) * 30 + 50;  
   let b = sin(colorShift) * 100 + 150;
-
   let c = color(r, g, b);
   stroke(c);
-
   noFill();
   
   if (d < distortionThreshold) {
@@ -94,9 +93,22 @@ function draw() {
   } else {
     heart(centerX, centerY, heartSize);
   }
-  
-  
+
+  // Video settings
+  let videoWidth = width / 4;  
+  let videoHeight = (video.height / video.width) * videoWidth;  
+  let videoX = width - videoWidth - 10;  
+  let videoY = height - videoHeight - 10;  
+
+  // Flip the video horizontally
+  push();
+  translate(videoX + videoWidth, videoY);  // Move to correct position
+  scale(-1, 1);  // Flip horizontally
+  image(video, 0, 0, videoWidth, videoHeight);  
+  pop();
 }
+
+
 
 function heart(x, y, size) {
   beginShape();

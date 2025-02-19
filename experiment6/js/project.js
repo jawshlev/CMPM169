@@ -30,5 +30,6 @@ function main() {
   myInstance.myMethod();
 }
 
+
 // let's get this party started - uncomment me
 //main();
