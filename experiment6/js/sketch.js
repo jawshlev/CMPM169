@@ -50,7 +50,7 @@ function draw() {
   
   push();
   textFont("IM Fell DW Pica SC");
-  textSize(24);
+  textSize(30);
   textAlign(CENTER, CENTER);
   fill(255);
   noStroke();
@@ -95,10 +95,10 @@ function draw() {
   }
 
   // Video settings
-  let videoWidth = width / 4;  
+  let videoWidth = (width / 4) * 1.15;  
   let videoHeight = (video.height / video.width) * videoWidth;  
-  let videoX = width - videoWidth - 10;  
-  let videoY = height - videoHeight - 10;  
+  let videoX = width - videoWidth;  
+  let videoY = height - videoHeight;  
 
   // Flip the video horizontally
   push();
